@@ -1,25 +1,22 @@
 
-Асинхронный клиент на aiohhtp для криптобиржи Deribit
+Asynchronous Client using aiohttp for the Deribit Cryptocurrency Exchange
 
-В проекте клиент каждую минуту забирает с биржи текущую цену btc_usd и eth_usd
-и затем сохраняет в базу данных PostgreSQL тикер валюты, текущую цену и время. 
+In this project, the client retrieves the current price of btc_usd and eth_usd from the exchange every minute and then saves the currency ticker, the current price and the timestamp in a PostgreSQL database.
 
-REST API для работы с сохраненными данными:
-- получение всех сохраненных данных по указанной валюте (назваие валюты вводить в обязательный параметр "ticker" в Swagger UL)
-- получение последней цены валюты (название валюты вводить в обязательный параметр "ticker")
-- получение цены валюты с фильтром по дате (название валюты вводить в обязательный параметр "ticker", также ввест дату
-в формате год-месяц-день час:минуты)
+REST API for working with saved data:
 
-Запуск приложения: 
-- активировать виртуальное окружение командой .\venv\Scripts\Activate
-- запустите приложение командой uvicorn app.main:app --reload
-- перейти на сайт http://127.0.0.1:8000/docs
+Retrieve all saved data for a specified currency (the currency name must be input as a mandatory parameter "ticker" in Swagger UI).
+Retrieve the latest price for a currency (the currency name must be input as a mandatory parameter "ticker").
+Retrieve the currency price with a date filter (the currency name must be input as a mandatory parameter "ticker", and the date must be entered in the format year-month-day hours-minutes).
 
-Запуск базы данных (из виртуального окружения): 
-- в postgresql создать новую базу данных 
-- в файле database.py в поле DB_NAME прописать имя созданной базы данных 
-- в терминале ввести команду alembic revision --autogenerate -m "Initial migration"
-- затем в терминале ввести команду alembic upgrade head
+Running the Application:
 
-  
+Activate the virtual environment with the command: . \venv\Scripts\Activate
+Start the application with the command: uvicorn app.main:app --reload
+Go to the website: http://127.0.0.1:8000/docs
+Running the Database (from the virtual environment):
 
+Create a new database in PostgreSQL.
+In the database.py file, set the DB_NAME field to the name of the created database.
+Input the command alembic revision --autogenerate -m "Initial migration" in the terminal.
+Then, input the command alembic upgrade head in the terminal.
